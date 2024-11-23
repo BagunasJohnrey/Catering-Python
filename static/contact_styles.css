@@ -1,0 +1,89 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Increased maximum width of the container for desktop */
+    max-height: 700px;
+    margin: 50px auto; /* Centering the container */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px; /* Adjusted margin for better spacing */
+    font-weight: bold;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Full width for responsiveness */
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #28a745; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Full width for responsiveness */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #000000;
+    text-align: center;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px; /* Reduce margin on smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    input[type="text"],
+    button {
+        width: 100%; /* Ensure inputs and buttons take full width */
+    }
+}

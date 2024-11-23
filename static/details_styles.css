@@ -1,0 +1,130 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Increased maximum width of the container for desktop */
+    max-height: 700px;
+    margin: 50px auto; /* Centering the container */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px; /* Adjusted margin for better spacing */
+    font-weight: bold;
+    color: #333; /* Darker color for better readability */
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="text"],
+select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Full width for responsiveness */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    font-size: 1em; /* Consistent font size */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Specific styles for input types */
+input[type="date"],
+input[type="time"] {
+    background-color: #fff; /* White background for date and time inputs */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove default spin buttons in webkit browsers */
+    margin: 0; /* Reset margin */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #28a745; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Full width for responsiveness */
+    font-size: 1em; /* Consistent font size */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.alert {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px; /* Reduce margin on smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    input[type="date"],
+    input[type="time"],
+    input[type="number"],
+    input[type="text"],
+    select,
+    button {
+        width: 100%; /* Ensure inputs and buttons take full width */
+    }
+}
