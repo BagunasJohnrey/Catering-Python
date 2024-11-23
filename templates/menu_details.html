@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Details</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Select Menu Details</h2>
+        <form method="POST">
+
+            <label for="service_type">Service Type:</label>
+            <select name="service_type" id="service_type" required>
+                <option value="" disabled {% if not menu_data.get('service_type') %}selected{% endif %}>Select Service Type</option>
+                {% for service_type in service_type %}
+                    <option value="{{ service_type }}" {% if menu_data.get('service_type') == service_type %}selected{% endif %}>{{ service_type }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="food_package">Food Package :</label>
+            <select name="food_package" id="food_package" required>
+                <option value="" disabled {% if not menu_data.get('food_package') %}selected{% endif %}>Select Food Package</option>
+                {% for food_package in food_package %}
+                    <option value="{{ food_package }}" {% if menu_data.get('food_package') == food_package %}selected{% endif %}>{{ food_package }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="meal_type">Meal Type :</label>
+            <select name="meal_type" id="meal_type" required>
+                <option value="" disabled {% if not menu_data.get('meal_type') %}selected{% endif %}>Select Meal Type</option>
+                {% for meal_type in meal_type %}
+                    <option value="{{ meal_type }}" {% if menu_data.get('meal_type') == meal_type %}selected{% endif %}>{{ meal_type }}</option>
+                {% endfor %}
+            </select>
+            
+
+        
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>

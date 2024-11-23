@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Enter Event Details</h2>
+
+        <!-- Flash messages section -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    <ul class="list-unstyled">
+                        {% for category, message in messages %}
+                            <li class="alert alert-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('event_details') }}">
+            <label for="event_date">Event Date:</label>
+            <input type="date" name="event_date" id="event_date" value="{{ event_data.get('event_date', '') }}" required>
+        
+            <label for="event_time">Event Time:</label>
+            <input type="time" name="event_time" id="event_time" value="{{ event_data.get('event_time', '') }}" required>
+        
+            <label for="guest_count">Guest Count:</label>
+            <input type="number" name="guest_count" id="guest_count" value="{{ event_data.get('guest_count', '') }}" required>
+        
+            <label for="event_place">Event Place:</label>
+            <input type="text" name="event_place" id="event_place" value="{{ event_data.get('event_place', '') }}" required>
+        
+            <label for="event_type">Event Type:</label>
+            <select name="event_type" id="event_type" required>
+                <option value="" disabled {% if not event_data.get('event_type') %}selected{% endif %}>Select Event Type</option>
+                {% for event_type in event_types %}
+                    <option value="{{ event_type }}" {% if event_data.get('event_type') == event_type %}selected{% endif %}>{{ event_type }}</option>
+                {% endfor %}
+            </select>
+        
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>
+
+    <!-- Bootstrap JS (optional for alert dismiss functionality) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+</html>

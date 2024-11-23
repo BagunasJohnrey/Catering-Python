@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Contact</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Enter Your Contact Information</h2>
+
+        <form method="POST">
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" value="{{ full_name if full_name else '' }}" required>
+        
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="{{ address if address else '' }}" required>
+        
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ phone_number if phone_number else '' }}" required>
+        
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        
+            <button type="submit">Next</button>
+        </form>
+        
+    </div>
+</body>
+</html>
