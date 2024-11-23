@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Evelyn Catering Services</h2>
+        <p>Welcome to Evelyn Catering Services, where we provide exquisite culinary experiences tailored to your events. Our dedicated team is committed to delivering delicious meals and exceptional service, ensuring your occasion is memorable and enjoyable.</p>
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul>
