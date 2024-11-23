@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h2>Evelyn Catering Services</h2>
-        <p>Welcome to Evelyn Catering Services, where we provide exquisite culinary experiences tailored to your events. Our dedicated team is committed to delivering delicious meals and exceptional service, ensuring your occasion is memorable and enjoyable.</p>
+        <h2 class="catering_title">Evelyn Catering Services</h2>
+        <p class="intro">Welcome to Evelyn Catering Services, where we provide exquisite culinary experiences tailored to your events. Our dedicated team is committed to delivering delicious meals and exceptional service, ensuring your occasion is memorable and enjoyable.</p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul>
                 {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
+                    <li class="{{ category }}" >{{ message }}</li>
                 {% endfor %}
                 </ul>
             {% endif %}
@@ -34,7 +34,9 @@
         </form>
 
         <div class="note">
-            <p><strong>Note:</strong> Use 'admin' as username and 'admin' as password for admin access. Use 'user' as username and 'user' as password for user access.</p>
+            <!--<p><strong>Note:</strong> Use 'admin' as username and 'admin' as password for admin access. Use 'user' as username and 'user' as password for user access.</p>
+            -->
+            <p><strong>Note:</strong> Use 'user' as username and 'user' as password for user access.</p>
         </div>
     </div>
 </body>

@@ -2,28 +2,38 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #C2D9FF; /* Light background color */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px; /* Increased maximum width of the container for desktop */
-    max-height: 700px;
+    width: 1000px;
+    max-width: 1000px; /* Increased maximum width of the container for desktop */
+    height: 850px;
+    max-height: 900px;
     margin: 50px auto; /* Centering the container */
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Adding responsive padding */
-    padding: 20px;
     box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.catering_title{
+    font-size: 45px;
 }
 
 h2 {
     text-align: center;
-    color: #000000;
+    color: #190482; /* Darker color for headings */
     margin-bottom: 20px;
+}
+
+.intro{
+    font-size: 17px;
+    margin-top: 150px;
+    margin-bottom: 40px;
 }
 
 form {
@@ -34,13 +44,14 @@ form {
 label {
     margin-bottom: 10px; /* Adjusted margin for better spacing */
     font-weight: bold;
+    color: #190482; /* Darker color for labels */
 }
 
 input[type="text"],
 input[type="password"] {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #8E8FFA; /* Use a soft color for borders */
     border-radius: 4px;
     width: 100%; /* Full width for responsiveness */
     box-sizing: border-box; /* Ensures padding is included in width */
@@ -49,13 +60,13 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="password"]:focus,
 select:focus {
-    border-color: #28a745; /* Change border color on focus */
+    border-color: #7752FE; /* Change border color on focus */
     outline: none; /* Remove default outline */
 }
 
 button {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #7752FE; /* Button background color */
     color: white;
     border: none;
     border-radius: 4px;
@@ -64,13 +75,13 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #190482; /* Darker color on hover */
 }
 
-p{
+p {
     margin-top: 20px;
     font-size: 1em;
-    color: #000000;
+    color: #190482; /* Text color for paragraphs */
     text-align: center;
 }
 
@@ -88,10 +99,12 @@ ul {
 
 li.success {
     color: green;
+    text-align: center;
 }
 
 li.error {
     color: red;
+    text-align: center;
 }
 
 /* Responsive Styles */

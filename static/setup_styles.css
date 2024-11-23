@@ -1,26 +1,24 @@
-/* static/styles.css */
+/* static/setup_styles.css */
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #C2D9FF; /* Light background color */
+    background-color: #C2D9FF; /* Updated background color */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px; /* Increased maximum width of the container for desktop */
-    max-height: 700px;
-    margin: 50px auto; /* Centering the container */
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 50px auto; /* Center the container */
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensures padding is included in width */
 }
 
 h2 {
     text-align: center;
-    color: #190482; /* Darker color for headings */
+    color: #190482; /* Updated heading color */
     margin-bottom: 20px;
 }
 
@@ -30,29 +28,30 @@ form {
 }
 
 label {
-    margin-bottom: 10px; /* Adjusted margin for better spacing */
+    margin-bottom: 8px; /* Space between label and input */
     font-weight: bold;
-    color: #7752FE; /* Use a color from the palette for labels */
+    color: #7752FE; /* Updated label color */
 }
 
+select,
 input[type="text"] {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #8E8FFA; /* Lighter border color */
+    border: 1px solid #8E8FFA; /* Updated border color */
     border-radius: 4px;
     width: 100%; /* Full width for responsiveness */
-    box-sizing: border-box; /* Ensures padding is included in width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
-input[type="text"]:focus,
-select:focus {
+select:focus,
+input[type="text"]:focus {
     border-color: #7752FE; /* Change border color on focus */
     outline: none; /* Remove default outline */
 }
 
 button {
     padding: 10px;
-    background-color: #7752FE; /* Button background color */
+    background-color: #190482; /* Updated button background color */
     color: white;
     border: none;
     border-radius: 4px;
@@ -61,18 +60,20 @@ button {
 }
 
 button:hover {
-    background-color: #190482; /* Darker shade on hover */
+    background-color: #7752FE; /* Change background color on hover */
 }
 
 p {
     margin-top: 20px;
     font-size: 1em;
-    color: #190482; /* Darker color for paragraph text */
+    color: #333;
     text-align: center;
 }
 
-.error {
-    color: red;
+.note {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555; /* Kept note color for readability */
     text-align: center;
 }
 
@@ -81,10 +82,5 @@ p {
     .container {
         margin: 20px; /* Reduce margin on smaller screens */
         padding: 15px; /* Adjust padding for smaller screens */
-    }
-
-    input[type="text"],
-    button {
-        width: 100%; /* Ensure inputs and buttons take full width */
     }
 }

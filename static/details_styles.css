@@ -2,7 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #C2D9FF; /* Light background color */
     margin: 0;
     padding: 0;
 }
@@ -20,19 +20,14 @@ body {
 
 h2 {
     text-align: center;
-    color: #000000;
+    color: #190482; /* Darker color for headings */
     margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
 }
 
 label {
     margin-bottom: 5px; /* Adjusted margin for better spacing */
     font-weight: bold;
-    color: #333; /* Darker color for better readability */
+    color: #7752FE; /* Use a color from the palette for labels */
 }
 
 input[type="date"],
@@ -42,7 +37,7 @@ input[type="text"],
 select {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #8E8FFA; /* Lighter border color */
     border-radius: 4px;
     width: 100%; /* Full width for responsiveness */
     box-sizing: border-box; /* Ensures padding is included in width */
@@ -50,16 +45,9 @@ select {
     transition: border-color 0.3s; /* Smooth transition for border color */
 }
 
-/* Specific styles for input types */
 input[type="date"],
 input[type="time"] {
-    background-color: #fff; /* White background for date and time inputs */
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none; /* Remove default spin buttons in webkit browsers */
-    margin: 0; /* Reset margin */
+    background-color: #FFFFFF; /* Keep the background white for inputs */
 }
 
 input[type="text"]:focus,
@@ -67,13 +55,13 @@ input[type="date"]:focus,
 input[type="time"]:focus,
 input[type="number"]:focus,
 select:focus {
-    border-color: #28a745; /* Change border color on focus */
+    border-color: #7752FE; /* Change border color on focus to a palette color */
     outline: none; /* Remove default outline */
 }
 
 button {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #190482; /* Use a dark color for buttons */
     color: white;
     border: none;
     border-radius: 4px;
@@ -84,7 +72,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #7752FE; /* Change background color on hover */
 }
 
 .alert {
@@ -94,13 +82,13 @@ button:hover {
 }
 
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #d4edda; /* Keep success alert color */
+    color: #155724; /* Keep success alert text color */
 }
 
 .alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #f8d7da; /* Keep error alert color */
+    color: #721c24; /* Keep error alert text color */
 }
 
 ul {

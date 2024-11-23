@@ -1,0 +1,84 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #C2D9FF; /* Updated background color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px; /* Adjusted maximum width for better fit */
+    margin: 50px auto; /* Centering the container */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+h2 {
+    text-align: center;
+    color: #190482; /* Updated heading color */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px; /* Adjusted margin for better spacing */
+    font-weight: bold;
+    color: #7752FE; /* Updated label color */
+}
+
+select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #8E8FFA; /* Updated border color */
+    border-radius: 4px;
+    width: 100%; /* Full width for responsiveness */
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+select:focus {
+    border-color: #7752FE; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 10px;
+    background-color: #190482; /* Updated button background color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Full width for responsiveness */
+    font-size: 16px; /* Increased font size for better accessibility */
+}
+
+button:hover {
+    background-color: #7752FE; /* Change background color on hover */
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555; /* Keep note color for readability */
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px; /* Reduce margin on smaller screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    select,
+    button {
+        width: 100%; /* Ensure selects and buttons take full width */
+    }
+}
