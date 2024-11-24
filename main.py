@@ -337,6 +337,37 @@ def admin_panel():
 
     return render_template('admin.html', bookings=bookings, event_date_filter=event_date_filter, event_type_filter=event_type_filter, sort_by=sort_by)
 
+@app.route('/admin/edit/<int:booking_id>', methods=['GET', 'POST'])
+def edit_booking(booking_id):
+    booking = CateringBooking.query.get(booking_id)
+    if not booking:
+        flash("Booking not found.", 'error')
+        return redirect(url_for('admin_panel'))
+
+    if request.method == 'POST':
+        # Update booking details from the form
+        booking.full_name = request.form['full_name']
+        booking.address = request.form['address']
+        booking.phone_number = request.form['phone_number']
+        booking.event_date = request.form['event_date']
+        booking.event_time = request.form['event_time']
+        booking.guest_count = request.form['guest_count']
+        booking.event_place = request.form['event_place']
+        booking.event_type = request.form['event_type']
+        booking.service_type = request.form['service_type']
+        booking.food_package = request.form['food_package']
+        booking.meal_type = request.form['meal_type']
+        booking.chair_type = request.form['chair_type']
+        booking.table_type = request.form['table_type']
+        booking.theme_suggestion = request.form['theme_suggestion']
+        booking.additional_suggestion = request.form['additional_suggestion']
+
+        db.session.commit()
+        flash("Booking updated successfully!", 'success')
+        return redirect(url_for('admin_panel'))
+
+    return render_template('edit_booking.html', booking=booking)
+
 # Main Execution
 if __name__ == '__main__':
     create_database()

@@ -20,10 +20,24 @@
         }
         .alert {
             color: #FFFFFF; /* White text for success message */
-            background-color: #008000; /* Green */
+            background-color: #7752FE; /* Custom Purple */
         }
         .form-label {
             color: #190482; /* Dark Blue */
+        }
+        .btn-primary {
+            background-color: #7752FE; /* Custom Purple */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #8E8FFA; /* Soft Blue */
+        }
+        .btn-secondary {
+            background-color: #8E8FFA; /* Soft Blue */
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #7752FE; /* Custom Purple */
         }
         .btn-danger {
             background-color: #FF0000; /* Red for delete button */
@@ -33,6 +47,13 @@
         }
         .table th, .table td {
             border-color: #8E8FFA; /* Soft Blue */
+        }
+        .table th {
+            background-color: #7752FE; /* Custom Purple */
+            color: #FFFFFF; /* White text */
+        }
+        .table tr:hover {
+            background-color: #C2D9FF; /* Light Blue on row hover */
         }
         .note {
             color: #555555; /* Light Gray */
@@ -80,12 +101,12 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-secondary">Sort </button>
+                    <button type="submit" class="btn btn-secondary">Sort</button>
                 </div>
             </div>
         </form>
         
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Full Name</th>
@@ -103,9 +124,10 @@
                     <td>{{ booking.event_type }}</td>
                     <td>{{ booking.guest_count }}</td>
                     <td>
-                        <form method="POST" action="{{ url_for('admin_panel') }}">
+                        <a href="{{ url_for('edit_booking', booking_id=booking.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('admin_panel') }}" method="POST" style="display:inline;">
                             <input type="hidden" name="event_date" value="{{ booking.event_date }}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>
