@@ -293,7 +293,29 @@ def setup_details():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_panel():
-    bookings = CateringBooking.query.all()
+    # Start with a base query
+    bookings_query = CateringBooking.query
+    
+    # Filtering
+    event_date_filter = request.args.get('event_date', '')
+    event_type_filter = request.args.get('event_type', '')
+
+    if event_date_filter:
+        bookings_query = bookings_query.filter(CateringBooking.event_date == event_date_filter)
+    
+    if event_type_filter:
+        bookings_query = bookings_query.filter(CateringBooking.event_type == event_type_filter)
+
+    # Sorting
+    sort_by = request.args.get('sort_by', 'event_date')
+    if sort_by == 'guest_count':
+        bookings_query = bookings_query.order_by(CateringBooking.guest_count)
+    else:
+        bookings_query = bookings_query.order_by(CateringBooking.event_date)
+
+    # Execute the query and get the results as a list
+    bookings = bookings_query.all()
+
     if request.method == 'POST':
         try:
             event_date = request.form['event_date']
@@ -306,7 +328,8 @@ def admin_panel():
                 flash(MESSAGES['ERROR_DATE_BOOKED'], 'error')
         except Exception as e:
             flash(f"An error occurred: {e}", 'error')
-    return render_template('admin.html', bookings=bookings)
+
+    return render_template('admin.html', bookings=bookings, event_date_filter=event_date_filter, event_type_filter=event_type_filter, sort_by=sort_by)
 
 # Main Execution
 if __name__ == '__main__':

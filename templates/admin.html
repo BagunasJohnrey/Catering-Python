@@ -25,10 +25,6 @@
         .form-label {
             color: #190482; /* Dark Blue */
         }
-        .form-control:focus {
-            border-color: #7752FE; /* Focus Border Color */
-            box-shadow: 0 0 0 0.2rem rgba(119, 82, 254, 0.25); /* Soft glow effect */
-        }
         .btn-danger {
             background-color: #FF0000; /* Red for delete button */
         }
@@ -51,38 +47,67 @@
     {% endif %}
     <div class="container mt-5">
         <h2 class="text-center">Admin Panel</h2>
-        <form action="/admin" method="POST" class="mt-4">
-            <div class="mb-3">
-                <label for="event_date" class="form-label">Event Date to Delete</label>
-                <input type="date" id="event_date" name="event_date" class="form-control" required>
+        
+        <form method="GET" action="{{ url_for('admin_panel') }}" class="mb-4">
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control" name="event_date" placeholder="Filter by Event Date" value="{{ event_date_filter }}">
+                </div>
+                <div class="col">
+                    <select class="form-select" name="event_type">
+                        <option value="">All Event Types</option>
+                        <option value="Wedding" {% if event_type_filter == 'Wedding' %}selected{% endif %}>Wedding</option>
+                        <option value="Birthday Party" {% if event_type_filter == 'Birthday Party' %}selected{% endif %}>Birthday Party</option>
+                        <option value="Corporate Event" {% if event_type_filter == 'Corporate Event' %}selected{% endif %}>Corporate Event</option>
+                        <option value="Anniversary" {% if event_type_filter == 'Anniversary' %}selected{% endif %}>Anniversary</option>
+                        <option value="Baby Shower" {% if event_type_filter == 'Baby Shower' %}selected{% endif %}>Baby Shower</option>
+                        <option value="Graduation Party" {% if event_type_filter == 'Graduation Party' %}selected{% endif %}>Graduation Party</option>
+                        <option value="Holiday Party" {% if event_type_filter == 'Holiday Party' %}selected{% endif %}>Holiday Party</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
             </div>
-            <button type="submit" class="btn btn-danger w-100">Delete Booking</button>
         </form>
-        <h3 class="mt-5">All Bookings</h3>
-        <table class="table table-bordered mt-3">
+        
+        <form method="GET" action="{{ url_for('admin_panel') }}" class="mb-4">
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" name="sort_by">
+                        <option value="event_date" {% if sort_by == 'event_date' %}selected{% endif %}>Sort by Event Date</option>
+                        <option value="guest_count" {% if sort_by == 'guest_count' %}selected{% endif %}>Sort by Guest Count</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-secondary">Sort </button>
+                </div>
+            </div>
+        </form>
+        
+        <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <th>Full Name</th>
                     <th>Event Date</th>
-                    <th>Event Place</th>
                     <th>Event Type</th>
-                    <th>Service Type</th>
-                    <th>Food Package</th>
-                    <th>Meal Type</th>
+                    <th>Guest Count</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for booking in bookings %}
                 <tr>
-                    <td>{{ booking.id }}</td>
                     <td>{{ booking.full_name }}</td>
                     <td>{{ booking.event_date }}</td>
-                    <td>{{ booking.event_place }}</td>
                     <td>{{ booking.event_type }}</td>
-                    <td>{{ booking.service_type }}</td>
-                    <td>{{ booking.food_package }}</td>
-                    <td>{{ booking.meal_type }}</td>
+                    <td>{{ booking.guest_count }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('admin_panel') }}">
+                            <input type="hidden" name="event_date" value="{{ booking.event_date }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
