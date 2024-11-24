@@ -20,6 +20,40 @@ body {
     box-sizing: border-box; /* Ensures padding is included in width */
 }
 
+.video-background {
+    position: fixed; /* Make it fixed to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent overflow */
+    z-index: -1; /* Send it to the back */
+}
+
+.video-background video {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the entire area */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(194, 217, 255, 0.5); /* Low opacity overlay */
+    z-index: 1; /* Ensure overlay is above the video */
+}
+
+.logo {
+    width: 550px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image */
+    margin-bottom: -70px;
+}
+
 .catering_title{
     font-size: 45px;
 }
@@ -32,8 +66,9 @@ h2 {
 
 .intro{
     font-size: 17px;
-    margin-top: 150px;
-    margin-bottom: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
 }
 
 form {
@@ -120,3 +155,8 @@ li.error {
         width: 100%; /* Ensure inputs and buttons take full width */
     }
 }
+
+
+/* Video Source */
+
+/* https://www.youtube.com/watch?v=XVwHLwZrIYk */
