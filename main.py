@@ -224,6 +224,7 @@ def menu_details():
     menu_data = session.get('menu_data', {})
     return render_template('menu_details.html', menu_data=menu_data, service_type=service_type, food_package=food_package, meal_type=meal_type)
 
+# Routes
 @app.route('/user/setup', methods=['GET', 'POST'])
 def setup_details():
     if request.method == 'POST':
@@ -284,11 +285,16 @@ def setup_details():
         session.pop('event_data', None)
         session.pop('menu_data', None)
         flash(MESSAGES['SUCCESS_BOOKING'], 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('payment'))  # Redirect to the payment page
 
     # Check if setup_data exists in the session, if not, initialize it as an empty dictionary
     setup_data = session.get('setup_data', {})
     return render_template('setup_details.html', setup_data=setup_data)
+
+# New payment route
+@app.route('/user/payment', methods=['GET'])
+def payment():
+    return render_template('payment.html')
 
 
 @app.route('/admin', methods=['GET', 'POST'])
