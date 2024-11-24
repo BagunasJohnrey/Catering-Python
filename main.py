@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
+import requests
 
 # App Configuration
 app = Flask(__name__)
@@ -41,7 +42,6 @@ class CateringBooking(db.Model):
 # Database Initialization
 def create_database():
     with app.app_context():
-        # db.drop_all() #this will drop the tables
         db.create_all()
 
 # Helper Functions
@@ -50,6 +50,41 @@ def is_date_booked(event_date):
 
 def get_booking_by_date(event_date):
     return CateringBooking.query.filter_by(event_date=event_date).first()
+
+def send_sms(phone_number, full_name, event_date, event_time, guest_count, event_place, event_type, service_type, food_package, meal_type, chair_type, table_type, theme_suggestion=None, additional_suggestion=None):
+    # Construct the detailed message
+    default_message = (
+        f"Hello {full_name},\n"
+        f"Your catering service has been booked successfully!\n\n"
+        f"Event Details:\n"
+        f"- Event Date: {event_date}\n"
+        f"- Event Time: {event_time}\n"
+        f"- Guest Count: {guest_count}\n"
+        f"- Event Place: {event_place}\n"
+        f"- Event Type: {event_type}\n"
+        f"- Service Type: {service_type}\n"
+        f"- Food Package: {food_package}\n"
+        f"- Meal Type: {meal_type}\n"
+        f"- Chair Type: {chair_type}\n"
+        f"- Table Type: {table_type}\n"
+    )
+    
+    # Add optional suggestions if provided
+    if theme_suggestion:
+        default_message += f"- Theme Suggestion: {theme_suggestion}\n"
+    if additional_suggestion:
+        default_message += f"- Additional Suggestions: {additional_suggestion}\n"
+    
+    # Finalize the message
+    default_message += "\nWe look forward to making your event special!"
+
+    try:
+        api_url = f'https://api.kenliejugarap.com/freesmslbc/?number={phone_number}&message={default_message}'
+        response = requests.get(api_url)
+        return response.status_code == 200
+    except Exception as error:
+        print('Error sending SMS:', error)
+        return False
 
 # Routes
 @app.route('/')
@@ -94,7 +129,6 @@ def user_contact():
     
     return render_template('user_contact.html')
 
-
 @app.route('/user/event', methods=['GET', 'POST'])
 def event_details():
     event_types = [
@@ -137,10 +171,8 @@ def event_details():
     event_data = session.get('event_data', {})
     return render_template('event_details.html', event_data=event_data, event_types=event_types)
 
-
 @app.route('/user/menu', methods=['GET', 'POST'])
 def menu_details():
-
     service_type = [
         'Buffet Style',
         'Plated Service',
@@ -152,33 +184,32 @@ def menu_details():
     ]
 
     food_package = [
-    'Standard Package',         # Basic meal with limited options
-    'Premium Package',          # Includes premium options like seafood, exotic meats, etc.
-    'Vegetarian Package',       # A vegetarian-only package
-    'Vegan Package',            # A vegan-only package
-    'Gluten-Free Package',      # A package with gluten-free options
-    'Family Feast Package',     # Large portions for family or group-style dining
-    'Gourmet Package',          # High-end, luxury dining experience
-    'Breakfast Package',        # Morning meal offerings, like pastries, eggs, coffee
-    'Brunch Package'            # Mid-morning to early afternoon, mixing breakfast and lunch options
+        'Standard Package',
+        'Premium Package',
+        'Vegetarian Package',
+        'Vegan Package',
+        'Gluten-Free Package',
+        'Family Feast Package',
+        'Gourmet Package',
+        'Breakfast Package',
+        'Brunch Package'
     ]
 
     meal_type = [
-    'Breakfast',                # Morning meal options
-    'Lunch',                    # Midday meal options
-    'Dinner',                   # Evening meal options
-    'Snacks',                   # Light bites or snack options
-    'Dessert',                  # Sweet treats and desserts
-    'Appetizer',                # Starter dishes before the main course
-    'Main Course',              # The primary part of the meal
-    'Buffet',                   # All-you-can-eat spread of various meal types
-    'Family-Style',             # A more communal dining experience with shared dishes
-    'Platters',                 # Large platters for sharing, often with a variety of options
-    'Sweets and Treats',        # Sweet snacks like pastries, cookies, and candies
-    'Barbecue',                 # Grilled items, typically served in a casual outdoor setting
-    'Barista Bar',              # Coffee and specialty drinks station, often for events with beverages
+        'Breakfast',
+        'Lunch',
+        'Dinner',
+        'Snacks',
+        'Dessert',
+        'Appetizer',
+        'Main Course',
+        'Buffet',
+        'Family-Style',
+        'Platters',
+        'Sweets and Treats',
+        'Barbecue',
+        'Barista Bar',
     ]
-
 
     if request.method == 'POST':
         # Save the menu data in the session
@@ -193,7 +224,6 @@ def menu_details():
     menu_data = session.get('menu_data', {})
     return render_template('menu_details.html', menu_data=menu_data, service_type=service_type, food_package=food_package, meal_type=meal_type)
 
-
 @app.route('/user/setup', methods=['GET', 'POST'])
 def setup_details():
     if request.method == 'POST':
@@ -207,10 +237,10 @@ def setup_details():
             return redirect(url_for('event_details'))
 
         setup_data = {
-            'chair_type': request.form['chair_type'],  # New field for chair type
-            'table_type': request.form['table_type'],  # New field for table type
-            'theme_suggestion': request.form['theme_suggestion'],  # Existing field
-            'additional_suggestion': request.form['additional_suggestion'],  # New field for additional suggestion
+            'chair_type': request.form['chair_type'],
+            'table_type': request.form['table_type'],
+            'theme_suggestion': request.form['theme_suggestion'],
+            'additional_suggestion': request.form['additional_suggestion'],
         }
 
         # Check if setup data is present
@@ -228,6 +258,27 @@ def setup_details():
 
         db.session.add(booking)
         db.session.commit()
+
+        # Send SMS after successful booking
+        if send_sms(
+            user_data['phone_number'], 
+            user_data['full_name'], 
+            event_data['event_date'],
+            event_data['event_time'],
+            event_data['guest_count'],
+            event_data['event_place'],
+            event_data['event_type'],
+            menu_data['service_type'],
+            menu_data['food_package'],
+            menu_data['meal_type'],
+            setup_data['chair_type'],
+            setup_data['table_type'],
+            setup_data.get('theme_suggestion'),  # Optional
+            setup_data.get('additional_suggestion')  # Optional
+        ):
+            flash("SMS notification sent successfully!", 'success')
+        else:
+            flash("Failed to send SMS notification.", 'error')
 
         # Clear session data only after a successful booking
         session.pop('event_data', None)
