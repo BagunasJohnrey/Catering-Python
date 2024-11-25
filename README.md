@@ -24,7 +24,7 @@ This project is a **Catering Service Management System**, built with **Flask** a
 - **View All Bookings**:
   - Admin can view all existing bookings.
 - **Delete Bookings**:
-  - Admin can delete bookings by selecting the event date.
+  - Admin can delete, sort, and update bookings by selecting the event date.
 
 ---
 
@@ -58,11 +58,11 @@ pip install -r requirements.txt
 3. **Run the Application**:
    - Initialize the database:
      ```bash
-     python app.py
+     python main.py
      ```
    - Start the Flask development server:
      ```bash
-     python app.py
+     python main.py
      ```
 
 4. **Access the Application**:
@@ -112,7 +112,7 @@ catering_service/
 │   ├── menu_details.html
 │   ├── setup_details.html
 │   └── admin.html
-├── static/              # Static assets (CSS, JS, Images)
+├── static/              # Static assets (CSS, JS, Images, Videos)
 ├── requirements.txt     # Python dependencies
 ├── catering_service.db  # SQLite database file (created after first run)
 └── README.md            # This file
@@ -142,15 +142,6 @@ catering_service/
 | `SUCCESS_BOOKING`      | Booking successful.                          |
 | `SUCCESS_DELETION`     | Booking deleted successfully.                |
 | `ERROR_DATE_BOOKED`    | Catering service already booked for this date.|
-
----
-
-## Future Enhancements
-
-- Add email notification support.
-- Implement user registration and profile management.
-- Enhance the admin panel with filtering and sorting options.
-- Support for payment integration.
 
 ---
 
