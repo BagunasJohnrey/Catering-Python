@@ -368,6 +368,11 @@ def edit_booking(booking_id):
 
     return render_template('edit_booking.html', booking=booking)
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()  # Clear the session
+    return redirect(url_for('login'))  # Redirect to the login page
+
 # Main Execution
 if __name__ == '__main__':
     create_database()
