@@ -58,6 +58,19 @@
         .note {
             color: #555555; /* Light Gray */
         }
+        .exit-button {
+        background-color: red; /* Button background color */
+        color: white;          /* Text color */
+        border: none;         /* No border */
+        padding: 10px 20px;   /* Padding for the button */
+        cursor: pointer;       /* Pointer cursor on hover */
+        font-size: 16px;       /* Font size */
+        border-radius: 5px;    /* Rounded corners */
+        }
+
+        .exit-button:hover {
+            background-color: darkred; /* Darker shade on hover */
+        }
     </style>
 </head>
 <body>
@@ -134,6 +147,9 @@
                 {% endfor %}
             </tbody>
         </table>
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit" class="exit-button">Exit</button>
+        </form>
     </div>
 </body>
 </html>
