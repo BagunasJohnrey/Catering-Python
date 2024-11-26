@@ -49,7 +49,70 @@
         
     </div>
 
-    <!-- Bootstrap JS (optional for alert dismiss functionality) -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <div class="radio-container">
+        <h2>Event Type</h2>
+        <div class="slider">
+            <input type="radio" id="option1" name="options" title="Wedding" onclick="showImage(this)">
+            <label for="option1" class="radio-label">
+                <img src="https://i.ibb.co/1s0dzdH/thomas-william-OAVqa8h-Qv-WI-unsplash.jpg" alt="thomas-william-OAVqa8h-Qv-WI-unsplash" border="0"></a>
+            </label>
+    
+            <input type="radio" id="option2" name="options" title="Birthday Party" onclick="showImage(this)">
+            <label for="option2" class="radio-label">
+                <img src="https://i.ibb.co/8NTfgkB/image.png" alt="image" border="0">
+            </label>
+    
+            <input type="radio" id="option3" name="options" title="Corporate Event" onclick="showImage(this)">
+            <label for="option3" class="radio-label">
+                <img src="https://i.ibb.co/JxMRmCF/image.png" alt="image" border="0">
+            </label>
+    
+            <input type="radio" id="option4" name="options" title="Anniversary" onclick="showImage(this)">
+            <label for="option4" class="radio-label">
+                <img src="https://i.ibb.co/7CZZG8w/image.png" alt="image" border="0">
+            </label>
+    
+            <input type="radio" id="option5" name="options" title="Baby Shower" onclick="showImage(this)">
+            <label for="option5" class="radio-label">
+                <img src="https://i.ibb.co/nPZNVgK/image.png" alt="image" border="0">
+            </label>
+    
+            <input type="radio" id="option6" name="options" title="Graduation Party" onclick="showImage(this)">
+            <label for="option6" class="radio-label">
+                <img src="https://i.ibb.co/tCz52XT/image.png" alt="image" border="0">
+            </label>
+    
+            <input type="radio" id="option7" name="options" title="Holiday Party" onclick="showImage(this)">
+            <label for="option7" class="radio-label">
+                <img src="https://i.ibb.co/YXy5k3H/image.png" alt="image" border="0">
+            </label>
+        </div>
+        <div id="selected-image" class="selected-image-container" style="display: none;">
+            <img id="displayed-image" src="" alt="Selected Option" />
+            <h3 id="image-title" style="text-align: center; margin-top: 10px;"></h3> <!-- Title for the image -->
+        </div>
+    </div>
+
+    <script>
+        function showImage(radio) {
+            // Get the corresponding image source from the label
+            const selectedImageSrc = radio.nextElementSibling.querySelector('img').src;
+            
+            // Get the title of the selected option
+            const selectedTitle = radio.title;
+    
+            // Update the displayed image
+            const displayedImage = document.getElementById('displayed-image');
+            displayedImage.src = selectedImageSrc;
+    
+            // Update the title of the displayed image
+            const displayedImageTitle = document.getElementById('image-title');
+            displayedImageTitle.innerText = selectedTitle;
+    
+            // Show the image container
+            document.getElementById('selected-image').style.display = 'block';
+        }
+    </script>
+
 </body>
 </html>

@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    max-width: 800px; /* Increased maximum width of the container for desktop */
+    max-width: 850px; /* Increased maximum width of the container for desktop */
     max-height: 700px;
     margin: 50px auto; /* Centering the container */
     padding: 20px;
@@ -20,6 +20,10 @@ body {
 
 h2 {
     text-align: center;
+    color: #190482; /* Darker color for headings */
+    margin-bottom: 20px;
+}
+h3 {
     color: #190482; /* Darker color for headings */
     margin-bottom: 20px;
 }
@@ -98,6 +102,59 @@ ul {
 
 li {
     margin-bottom: 5px;
+}
+
+.radio-container {
+    max-width: 850px; /* Increased maximum width of the container for desktop */
+    max-height: 700px;
+    margin: 50px auto; /* Centering the container */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width */    
+}
+
+.slider {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the items */
+    gap: 15px; /* Space between radio options */
+}
+
+.radio-label {
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.radio-label:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+input[type="radio"]:checked + .radio-label img {
+    border: 2px solid #7752FE; /* Highlight selected option */
+    border-radius: 8px; /* Rounded corners for the images */
+}
+
+.radio-label img {
+    width: 100px; /* Set a fixed width for images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners for images */
+}
+
+.selected-image-container {
+    margin-top: 20px; /* Space above the displayed image */
+    text-align: center; /* Center the image */
+}
+
+.selected-image-container img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for depth */
 }
 
 /* Responsive Styles */
