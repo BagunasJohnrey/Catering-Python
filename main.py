@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 import os
 import requests
@@ -26,7 +26,7 @@ class CateringBooking(db.Model):
     full_name = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(15), nullable=False)
-    event_date = db.Column(db.String(10), nullable=False)  # Format: YYYY-MM-D
+    event_date = db.Column(db.String(10), nullable=False) 
     event_time = db.Column(db.String(10), nullable=False)
     guest_count = db.Column(db.Integer, nullable=False)
     event_place = db.Column(db.String(255), nullable=False)
@@ -35,9 +35,9 @@ class CateringBooking(db.Model):
     food_package = db.Column(db.String(100), nullable=False)
     meal_type = db.Column(db.String(50), nullable=False)
     theme_suggestion = db.Column(db.String(255), nullable=True)
-    chair_type = db.Column(db.String(50), nullable=False)  # New field for chair type
-    table_type = db.Column(db.String(50), nullable=False)  # New field for table type
-    additional_suggestion = db.Column(db.String(255), nullable=True)  # New field for additional suggestion
+    chair_type = db.Column(db.String(50), nullable=False)  
+    table_type = db.Column(db.String(50), nullable=False)  
+    additional_suggestion = db.Column(db.String(255), nullable=True)  
 
 # Database Initialization
 def create_database():
@@ -48,9 +48,11 @@ def create_database():
 def is_date_booked(event_date):
     return CateringBooking.query.filter_by(event_date=event_date).first() is not None
 
+# Retrieve booking by date
 def get_booking_by_date(event_date):
     return CateringBooking.query.filter_by(event_date=event_date).first()
 
+# Send SMS 
 def send_sms(phone_number, full_name, event_date, event_time, guest_count, event_place, event_type, service_type, food_package, meal_type, chair_type, table_type, theme_suggestion=None, additional_suggestion=None):
     # Construct the detailed message
     default_message = (
@@ -86,11 +88,12 @@ def send_sms(phone_number, full_name, event_date, event_time, guest_count, event
         print('Error sending SMS:', error)
         return False
 
-# Routes
+# Login Route
 @app.route('/')
 def login():
     return render_template('login.html')
 
+# Authenticate User 
 @app.route('/authenticate', methods=['POST'])
 def authenticate():
     username = request.form['username']
@@ -105,6 +108,7 @@ def authenticate():
         flash(MESSAGES['LOGIN_FAILED'], 'error')
         return redirect(url_for('login'))
 
+# User Contact Information
 @app.route('/user/contact', methods=['GET', 'POST'])
 def user_contact():
     if request.method == 'POST':
@@ -129,6 +133,7 @@ def user_contact():
     
     return render_template('user_contact.html')
 
+# Event Details
 @app.route('/user/event', methods=['GET', 'POST'])
 def event_details():
     event_types = [
@@ -171,6 +176,7 @@ def event_details():
     event_data = session.get('event_data', {})
     return render_template('event_details.html', event_data=event_data, event_types=event_types)
 
+# Menu Details
 @app.route('/user/menu', methods=['GET', 'POST'])
 def menu_details():
     service_type = [
@@ -224,7 +230,7 @@ def menu_details():
     menu_data = session.get('menu_data', {})
     return render_template('menu_details.html', menu_data=menu_data, service_type=service_type, food_package=food_package, meal_type=meal_type)
 
-# Routes
+# Booking Setup
 @app.route('/user/setup', methods=['GET', 'POST'])
 def setup_details():
     if request.method == 'POST':
@@ -274,8 +280,8 @@ def setup_details():
             menu_data['meal_type'],
             setup_data['chair_type'],
             setup_data['table_type'],
-            setup_data.get('theme_suggestion'),  # Optional
-            setup_data.get('additional_suggestion')  # Optional
+            setup_data.get('theme_suggestion'),  
+            setup_data.get('additional_suggestion')  
         ):
             flash("SMS notification sent successfully!", 'success')
         else:
@@ -296,7 +302,9 @@ def setup_details():
 def payment():
     return render_template('payment.html')
 
+# Admin Route
 
+# View Bookings
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_panel():
     # Start with a base query
@@ -337,6 +345,7 @@ def admin_panel():
 
     return render_template('admin.html', bookings=bookings, event_date_filter=event_date_filter, event_type_filter=event_type_filter, sort_by=sort_by)
 
+# Edit Booking
 @app.route('/admin/edit/<int:booking_id>', methods=['GET', 'POST'])
 def edit_booking(booking_id):
     booking = CateringBooking.query.get(booking_id)
@@ -368,6 +377,7 @@ def edit_booking(booking_id):
 
     return render_template('edit_booking.html', booking=booking)
 
+# Logout
 @app.route('/logout', methods=['POST'])
 def logout():
     session.clear()  # Clear the session
