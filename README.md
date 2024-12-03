@@ -156,10 +156,7 @@ pip install -r requirements.txt
    ```
 
 3. **Run the Application**:
-   - Initialize the database:
-     ```bash
-     python main.py
-     ```
+
    - Start the Flask development server:
      ```bash
      python main.py
