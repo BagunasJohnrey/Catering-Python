@@ -4,6 +4,38 @@ This project is a **Catering Service Management System**, built with **Flask** a
 
 ---
 
+# Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Python Concepts and Libraries Used in the Catering Booking System](#python-concepts-and-libraries-used-in-the-catering-booking-system)
+   - [Flask Framework](#flask-framework)
+   - [SQLAlchemy](#sqlalchemy)
+   - [Session Management](#session-management)
+   - [Form Handling and Validation](#form-handling-and-validation)
+   - [Flash Messages](#flash-messages)
+   - [External API Integration](#external-api-integration)
+   - [HTML Templating](#html-templating)
+   - [Error Handling](#error-handling)
+   - [Environment Configuration](#environment-configuration)
+   - [Database Initialization](#database-initialization)
+3. [Features](#features)
+   - [User Features](#user-features)
+   - [Admin Features](#admin-features)
+4. [Sustainable Development Goals (SDGs) Integration](#sustainable-development-goals-sdgs-integration)
+   - [SDG 3: Good Health and Well-being](#sdg-3-good-health-and-well-being)
+   - [SDG 12: Responsible Consumption and Production](#sdg-12-responsible-consumption-and-production)
+   - [SDG 13: Climate Action](#sdg-13-climate-action)
+5. [Prerequisites](#prerequisites)
+6. [Setup](#setup)
+7. [Default Login Credentials](#default-login-credentials)
+8. [SMS Integration](#sms-integration)
+9. [Database Structure](#database-structure)
+10. [Directory Structure](#directory-structure)
+11. [Key Endpoints](#key-endpoints)
+12. [Flash Messages](#flash-messages)
+13. [License](#license)
+
+---
 
 ## Python Concepts and Libraries Used in the Catering Booking System
 
