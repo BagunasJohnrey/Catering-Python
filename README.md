@@ -20,6 +20,35 @@ This project is a **Catering Service Management System**, built with **Flask** a
 - **SMS Notification**:
   - Automatic SMS notifications upon successful booking.
 
+---
+
+## Sustainable Development Goals (SDGs) Integration
+
+This **Catering Service Management System** integrates multiple Sustainable Development Goals (SDGs) into its design and functionality. The selected goals focus on promoting health, sustainability, and climate action in the catering industry. Below is an explanation of the chosen SDGs and their integration into the project:
+
+### **SDG 3: Good Health and Well-being**
+**Objective:** Ensure healthy lives and promote well-being for all at all ages.  
+**Implementation in the Project:**
+- The system promotes healthy eating habits by providing **vegetarian**, **vegan**, and **gluten-free food packages** as part of the menu options.
+- These options are highlighted as healthier alternatives for users, encouraging better nutritional choices for their events.
+- This feature directly aligns with improving well-being through better dietary practices.
+
+### **SDG 12: Responsible Consumption and Production**
+**Objective:** Ensure sustainable consumption and production patterns.  
+**Implementation in the Project:**
+- The system encourages **eco-friendly practices**, such as using **biodegradable tableware** and sourcing ingredients from **sustainable farms**.
+- Event details include options for users to suggest themes or setups that prioritize minimal waste and sustainable materials.
+- By emphasizing efficient resource use, the project aligns with SDG 12 to reduce the environmental impact of catering events.
+
+### **SDG 13: Climate Action**
+**Objective:** Take urgent action to combat climate change and its impacts.  
+**Implementation in the Project:**
+- The catering service prioritizes **locally sourced ingredients**, reducing the carbon emissions associated with long-distance transportation.
+- The inclusion of **plant-based meal options** helps lower the environmental impact of livestock farming, which contributes significantly to greenhouse gas emissions.
+- The system minimizes the carbon footprint by incorporating sustainable catering methods into its service offerings.
+
+---
+
 ### Admin Features
 - **View All Bookings**:
   - Admin can view all existing bookings.
