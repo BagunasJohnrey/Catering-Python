@@ -83,6 +83,14 @@ This project is a **Catering Service Management System**, built with **Flask** a
 
 ---
 
+### Admin Features
+- **View All Bookings**:
+  - Admin can view all existing bookings.
+- **Delete Bookings**:
+  - Admin can delete, sort, and update bookings by selecting the event date.
+
+---
+
 ## Sustainable Development Goals (SDGs) Integration
 
 This **Catering Service Management System** integrates multiple Sustainable Development Goals (SDGs) into its design and functionality. The selected goals focus on promoting health, sustainability, and climate action in the catering industry. Below is an explanation of the chosen SDGs and their integration into the project:
@@ -107,14 +115,6 @@ This **Catering Service Management System** integrates multiple Sustainable Deve
 - The catering service prioritizes **locally sourced ingredients**, reducing the carbon emissions associated with long-distance transportation.
 - The inclusion of **plant-based meal options** helps lower the environmental impact of livestock farming, which contributes significantly to greenhouse gas emissions.
 - The system minimizes the carbon footprint by incorporating sustainable catering methods into its service offerings.
-
----
-
-### Admin Features
-- **View All Bookings**:
-  - Admin can view all existing bookings.
-- **Delete Bookings**:
-  - Admin can delete, sort, and update bookings by selecting the event date.
 
 ---
 
