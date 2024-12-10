@@ -7,10 +7,10 @@ This project is a **Catering Service Management System**, built with **Flask** a
 # Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Python Concepts and Libraries Used in the Catering Booking System](#python-concepts-and-libraries-used-in-the-catering-booking-system)
-3. [Features](#features)
+2. [Features](#features)
    - [User Features](#user-features)
    - [Admin Features](#admin-features)
+3. [Python Concepts and Libraries Used in the Catering Booking System](#python-concepts-and-libraries-used-in-the-catering-booking-system)
 4. [Sustainable Development Goals (SDGs) Integration](#sustainable-development-goals-sdgs-integration)
    - [SDG 3: Good Health and Well-being](#sdg-3-good-health-and-well-being)
    - [SDG 12: Responsible Consumption and Production](#sdg-12-responsible-consumption-and-production)
